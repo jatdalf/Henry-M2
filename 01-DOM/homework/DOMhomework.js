@@ -1,13 +1,14 @@
 // Crear un array vacío llamado 'toDoItems'
 // Tu codigo acá:
-
+var toDoItems = [];
 
 // En la página 'index.html' hay un elemento span cuyo texto es 'Aplicación creada por:'.
 // Usando querySelector seleccionar dicho span por su id ('createdBy') y luego usando innerHTML
 // agregar tu nombre al final del texto actual. Ej: 'Aplicación creada por Franco'
 // Tu código acá:
 
-
+const CrBy = document.querySelectorAll(".createdBy");
+document.getElementById("createdBy").innerHTML = "Aplicación creada por Jorge";
 
 // Crear una clase denominada 'ToDo' cuyo constructor debe recibir un único parámetro del tipo string
 // con el nombre 'description' que será justamente la descripción del ToDo.
@@ -16,9 +17,11 @@
 // 2) 'complete'    : debe setearse en false
 // Ayuda: usar 'this' en el constructor
 
-function ToDo () {
-  // Tu código acá:
+function ToDo (description) {
 
+  // Tu código acá:
+  this.description = description;
+  this.complete = false; 
 }
 
 
@@ -27,7 +30,9 @@ function ToDo () {
 // Debe setear el atributo 'complete' del ToDo en true
 
 // Tu código acá:
-
+ToDo.prototype.completeToDo= function() {
+  this.complete = true;
+}
 
 
 // Agregar dos parámetros a la función 'buildToDo':
@@ -50,7 +55,13 @@ function ToDo () {
 
 function buildToDo(todo, index) {
   // Tu código acá:
-
+  toDoShell =  document.createElement("div");
+  toDoText = document.createElement("span");
+  toDoShell.classList.add('toDoShell');
+  document.getElementById(todo).innerHTML = toDoText(index);
+  if(todo.complete)  toDoText.classList.add('completeText');
+  toDoText.appendChild(toDoShell);
+  return toDoShell;
 }
 
 // La función 'buildToDos' debe crear un array de objetos toDo y devolverlo
