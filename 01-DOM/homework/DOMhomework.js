@@ -62,7 +62,7 @@ function buildToDo(todo, index) {
   if(todo.complete)  toDoText.classList.add('completeText');
   toDoText.appendChild(toDoShell);
   return toDoShell;
-}
+} 
 
 // La función 'buildToDos' debe crear un array de objetos toDo y devolverlo
 // Recibirá como parámetro un array de objetos ToDo
