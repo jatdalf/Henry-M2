@@ -10,6 +10,17 @@
 <body>
   <button id='boton'>Ver Amigos</button>
   <ul id='lista'>
+    <script type="text/javascript">
+    var index = 1;
+    $.get("http://localhost:5000/amigos/" + index),
+    function(data){
+      var amigo = document.createElement("li");
+      amigo.value = data.value;
+      $("#respuesta").append(amigo);
+      index ++;
+   }
+
+    </script>
   </ul>
 
   <h2>Ver Amigos</h2>
@@ -23,6 +34,9 @@
   <input id='inputDelete'></input>
   <button id='delete'>Delete</button>
   <span id='success'></span>
-  <script src="index.js"></script>
+  <script src="index.js">
+      $("#boton").click(buscarAmigos())
+
+  </script>
 </body>
 </html>
