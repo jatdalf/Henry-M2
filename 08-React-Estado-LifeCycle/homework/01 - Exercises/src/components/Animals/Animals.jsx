@@ -2,10 +2,18 @@ import React from 'react'
 
 export default class Animals extends React.Component {
   constructor (props) {
-    super()
+    super();
   }
 
   render () {
-    return <div></div>
+    const animals = this.props.animals;
+    return (<div>
+      {animals.map((animal) => (
+      <div key={animal.name}>
+        <h5>{animal.name}</h5>
+        <img src={animal.image} alt={animal.name} width="300px"></img>
+        <span>{animal.specie}</span>
+      </div>))}
+    </div>)
   }
 }
