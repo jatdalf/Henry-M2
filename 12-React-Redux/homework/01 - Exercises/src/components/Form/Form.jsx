@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-
+import { addProduct } from "../../redux/actions/actions";
 import Caja from "../../assets/caja.png";
 import "./form.css";
 
-function Form() {
+function Form({ addProduct }) {
   const [product, setProduct] = useState({ name: "", price: "", id: "" });
+
+  function handleSubmit() {
+    addProduct({ ...product, id: Date.now() });
+  }
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -27,12 +31,20 @@ function Form() {
           value={product.price}
         />
       </div>
-      <button className="formBtn">¡ADD!</button>
+      <button onClick={handleSubmit} className="formBtn">
+        ¡ADD!
+      </button>
       <img src={Caja} alt="" className="logo" />
     </div>
   );
 }
 
-export function mapDispatchToProps() {}
+export function mapDispatchToProps(dispatch) {
+  return {
+    addProduct: function (product) {
+      dispatch(addProduct(product));
+    },
+  };
+}
 
 export default connect(null, mapDispatchToProps)(Form);
